@@ -1,0 +1,20 @@
+
+import java.io.*; 
+  
+ public class ProgramNumber1 { 
+     public static void main(String[] args) throws IOException { 
+        BufferedReader reader = new BufferedReader(new FileReader("data.txt"));
+        String line;
+        int sum = 0;
+  
+        while ((line = reader.readLine()) != null) {
+            sum += Integer.parseInt(line);
+        }
+        reader.close();
+  
+        FileWriter fw = new FileWriter("sum.txt"); 
+        BufferedWriter bw = new BufferedWriter(fw); 
+        bw.write(String.valueOf(sum)); 
+        bw.close(); 
+     } 
+ }
