@@ -1,0 +1,23 @@
+import java.io.*;
+
+public class ProgramNumber3 {
+  public static void main(String[] args) throws IOException {
+    BufferedReader reader = new BufferedReader(new FileReader("dummy.txt"));
+    
+    int numOfVowelCount = 0;
+    for (int i = 0; i < 5; i++) {
+      String line = reader.readLine();
+
+      for (char v : line.toCharArray()) {
+       
+        if (v == 'a' || v == 'A' || v == 'e' || v == 'E' || v == 'i' || v == 'I' || v == 'o' || v == 'O' || v == 'u' || v == 'U') {
+          numOfVowelCount++;
+            }
+        }
+    }
+
+    reader.close();
+
+    System.out.println("Vowel count: " + numOfVowelCount);
+    }
+}
