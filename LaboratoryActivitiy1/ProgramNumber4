@@ -1,0 +1,40 @@
+import java.io.*;
+import java.util.Scanner;
+
+public class ProgramNumber4 {
+    public static void main(String[] args) throws IOException {
+        Scanner userInput = new Scanner(System.in);
+        String inputFileName;
+        System.out.print("Enter file name: ");
+        
+        inputFileName = userInput.nextLine().trim();
+        File inputFilename = new File (inputFileName);
+
+        BufferedReader df = new BufferedReader(new FileReader (inputFilename));
+
+        String words;
+        int wordCount = 0;
+
+        try{
+            while ((words = df.readLine()) != null) {
+                String[] lineCount = words.split(" ");
+                wordCount += lineCount.length;
+                System.out.println(words);
+            } 
+                System.out.println("Total number of words in file: " + wordCount);
+            
+            File file = new File(inputFileName);
+            try (FileWriter fw = new FileWriter(file, true)) {
+                fw.write("\nTotal number of words in file: " + wordCount);
+                fw.flush();
+            }
+        } 
+            catch(IOException e) {
+            System.out.println("An error has occurred: " + e.getMessage());
+        } 
+            finally {
+            df.close();
+            userInput.close();
+        } 
+    }
+}
