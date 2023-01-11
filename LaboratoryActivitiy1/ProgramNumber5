@@ -1,0 +1,41 @@
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ProgramNumber5 {
+
+    public static void main(String[] args) throws IOException {
+        Scanner sc = new Scanner(System.in);
+        
+        System.out.print("Enter INPUT filename: ");
+        String inputFileName = sc.nextLine();
+        
+        System.out.print("Enter OUTPUT filename: ");
+        String outputFileName = sc.nextLine();
+
+        File inputFile = new File(inputFileName);
+        Scanner input = new Scanner(inputFile);
+        
+        ArrayList<String> reverse = new ArrayList<>();
+        
+        FileWriter outputFile = new FileWriter(outputFileName);
+        
+        try (PrintWriter output = new PrintWriter(outputFile)) {
+            while(input.hasNextLine()){
+                reverse.add(input.nextLine());
+            }
+            
+                for (int i = (reverse.size()-1); i >=0; i--){
+                    String words[] = reverse.get(i).split(" ");
+                
+                    for (int e = (words.length-1); e >=0; e--){
+                        output.print(words[e] + " ");
+                }
+                    output.println(" ");                   
+            }
+        }
+        catch (Exception e) {
+            System.out.println("An error has occured" + e.getMessage());
+        }            
+    }
+}
