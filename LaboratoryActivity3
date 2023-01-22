@@ -1,0 +1,60 @@
+public class LabExer3 {
+    public static void main(String[] args) {
+        
+        //No.1
+        System.out.println("Number 1");
+        System.out.println(SumOf(69));
+        System.out.println(" ");
+
+        //No.2
+        System.out.println("Number 2");
+        System.out.println(Asterisk("Programming"));
+        System.out.println(" ");
+
+        //No.3
+        System.out.println("Number 3");
+        System.out.println(BunnyEars(4,2));
+        System.out.println(" ");
+
+        // No.4 
+        System.out.println("Number 4");
+        System.out.println(XtoY("rainxxxgeronxxmarkxytaxmarkcarxtyam"));
+        System.out.println(" ");
+
+    }
+    
+    //No.1
+    public static int SumOf(int s) {
+        if (s == 0) {
+            return 0;
+        } else {
+            return (s % 10) + SumOf(s / 10);
+        }
+    }
+
+    //No.2
+    public static String Asterisk(String a){
+        if(a.length() <= 1)return a;{
+            return a.charAt(0) + "*" + Asterisk(a.substring(1));
+        }
+    }
+
+    //No.3
+    public static int BunnyEars(int x, int y){
+        if(y == 0){
+            return 0;
+        }
+        return x + BunnyEars(x,y-1);
+    }
+    
+    //No.4
+    public static String XtoY(String s){
+        if(s.equals("")){
+            return "";
+        }
+        if(s.charAt(0)=='x'){
+            return "y" + XtoY(s.substring(1));
+        }
+        return s.charAt(0) + XtoY(s.substring(1));
+    }
+}
